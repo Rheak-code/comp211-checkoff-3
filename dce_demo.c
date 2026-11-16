@@ -1,15 +1,3 @@
-/*
- * dce_demo.c — The "impossible benchmark" gotcha (Dead Code Elimination)
- *
- * Build:
- *   gcc -O3 dce_demo.c -o dce_bad                  # result never used
- *   gcc -O3 -DUSE_RESULT dce_demo.c -o dce_good    # result printed
- *
- * Compare with:  hyperfine -N --warmup 1 './dce_bad' './dce_good'
- *
- * In dce_bad the result is never read, so gcc -O3 is allowed to delete the
- * entire 500x500 multiplication. The program finishes almost instantly.
- */
 #include <stdio.h>
 
 #define N 500

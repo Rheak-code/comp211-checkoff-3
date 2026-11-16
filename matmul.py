@@ -1,13 +1,3 @@
-"""
-matmul.py — Matrix multiplication (Python version). No timing code:
-hyperfine measures the whole program from the outside.
-
-Usage:   python3 matmul.py <N> <order>
-         order = ijk | ikj   (pure Python, same loops as matmul.c)
-         order = numpy       (NumPy's A @ B, which calls optimized BLAS)
-
-Prints a checksum of C so you can verify it matches the C version.
-"""
 import sys
 
 

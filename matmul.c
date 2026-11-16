@@ -1,17 +1,3 @@
-/*
- * matmul.c — Matrix multiplication (C version). No timing code:
- * hyperfine measures the whole program from the outside.
- *
- * Usage:   ./matmul <N> <order>
- *          order = ijk  (standard: B read down columns -> cache misses)
- *          order = ikj  (swapped:  A and B read across rows -> cache friendly)
- *
- * Build:   gcc -O0 matmul.c -o matmul_O0
- *          gcc -O3 matmul.c -o matmul_O3
- *
- * Prints a checksum of C so you can verify every version computes the same
- * answer, and so the compiler can't delete the multiply as dead code.
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,7 +26,7 @@ static void matmul_ikj(int n, const double *A, const double *B, double *C) {
         for (int k = 0; k < n; k++) {
             double a = A[i*n + k];
             for (int j = 0; j < n; j++)
-                C[i*n + j] += a * B[k*n + j];     /* consecutive addresses */
+                C[i*n + j] += a * B[k*n + j];   
         }
 }
 
